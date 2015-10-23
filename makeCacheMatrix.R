@@ -2,13 +2,10 @@
 makeCacheMatrix <- function(x = c(0,0,0,0))
 {
   # Check if input vector can be recast as square matrix
-  mat <- matrix(x, 2, 2)
-  matinv <- mat
-  
   d <- sqrt(length(x))
   if(as.integer(d) != d)
   {
-    print("ERROR : Matrix is not square!")
+    print("ERROR : Square matrix cannot be formed!")
     return
   }
   else
