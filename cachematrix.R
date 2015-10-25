@@ -10,35 +10,20 @@
 makeCacheMatrix <- function(x = matrix()) {
 
 # Check if input vector can be recast as square matrix
-  d <- sqrt(length(x))
-  if(as.integer(d) != d)
-  {
-    print("ERROR : Square matrix cannot be formed!")
-    return
-  }
-  else
-  {
-    mat <<- matrix(x,d,d)
-    matinv <<- matrix(0,d,d) # initialize to zero matrix
-  }
+  
+  d <- dim(x)
+  x <<- matrix(data=NA,d[1],d[1])
+  matinv <<- matrix(0,d[1],d[1]) # initialize to zero matrix
+  
   
   # Set the value for matrix
   # Default for inverse is set to be same as the matrix itself
   set <- function(y)
   {
-    d <- sqrt(length(y))
-    if(as.integer(d) != d)
-    {
-      print("ERROR : Matrix is not square!")
-      return
-    }
-    else
-    {
-      mat <<- matrix(y,d,d)
-      matinv <<- matrix(0,d,d) # initialize to zero matrix
-    }
-    print(mat)
+    x <<- matrix(data=NA,d,d)
+    matinv <<- matrix(0,d,d) # initialize to zero matrix
   }
+    
   
   # Get value of vector used to make matrix
   get <- function() x
@@ -47,7 +32,7 @@ makeCacheMatrix <- function(x = matrix()) {
   setMatrixInv <- function(mat) matinv <<- solve(mat)
   
   # Access matrix for which inverse is being computed
-  getMatrix <- function() mat
+  getMatrix <- function() x
   
   # Access inverse of the matrix
   getMatrixInv <- function() matinv
