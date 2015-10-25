@@ -54,7 +54,7 @@ cacheSolve <- function(x, ...) {
   print(d)
   
   # Check if matrix is the default zero matrix
-  if(identical(m,matrix(0,d[1],d[1])))
+  if(identical(m,matrix(data=NA,d[1],d[1])))
   {
     data <- x$get()
     d1 <- as.integer(sqrt(length(data)))
